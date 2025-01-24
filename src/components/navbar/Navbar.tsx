@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { ReactNode, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom"
 import { AuthContext } from "../../contexts/AuthContext";
 
@@ -6,7 +6,7 @@ function Navbar() {
 
     const navigate = useNavigate();
 
-    const { handleLogout } = useContext(AuthContext)
+    const { usuario, handleLogout } = useContext(AuthContext)
 
     function logout() {
 
@@ -14,10 +14,14 @@ function Navbar() {
         alert('O Usuário foi desconectado com sucesso!')
         navigate('/')
     }
+    
+    let component: ReactNode
 
-    return (
-        <>
-            <div className='w-full bg-yellow-900 text-white
+    if (usuario.token !== "") {
+
+        component = (
+
+            <div className='w-full bg-indigo-900 text-white
                 flex justify-center py-4'>
 
                 <div className="container flex justify-between text-lg">
@@ -32,6 +36,14 @@ function Navbar() {
                     </div>
                 </div>
             </div>
+
+        )
+
+    }
+
+    return (
+        <>
+            { component }
         </>
     )
 }
