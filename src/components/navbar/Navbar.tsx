@@ -17,7 +17,7 @@ function Navbar() {
 
     return (
         <>
-            <div className='w-full bg-purple-800 text-white
+            <div className='w-full bg-yellow-900 text-white
                 flex justify-center py-4'>
 
                 <div className="container flex justify-between text-lg">
